@@ -1,0 +1,50 @@
+Files Created
+run_inference.py - Full SINGAPO inference pipeline
+
+Takes demo_input.png + example_graph.json as input
+Runs DINO feature extraction, diffusion inference (100 steps), mesh retrieval
+Outputs object.json + PLY meshes to output/0/
+run_visualizer.py - Interactive Viser-based 3D viewer
+
+Loads articulated object meshes and displays them with distinct part colors
+Direct drag interaction via transform gizmos on movable joints:
+Revolute joints (doors): rotation gizmo constrained to joint axis
+Prismatic joints (drawers): translation gizmo along joint axis
+Click-to-select parts (highlights + shows info)
+GUI panel: input image, part info, Reset/Animate/Export buttons
+Animation mode: cyclic smooth motion of all joints
+Tested and launches successfully with no errors
+README.md - Complete user guide with setup, usage, controls, and troubleshooting
+
+
+
+
+How to Run
+
+conda activate 4yp
+cd D:\4YP\singapo\Viser_trial
+
+# Step 1: Generate 3D mesh from input image
+python run_inference.py
+
+# Step 2: Launch interactive viewer
+python run_visualizer.py --object_dir output/0
+# Then open http://localhost:8080 in browser
+Quick Test (without running inference)
+To verify the visualizer immediately using existing demo data:
+
+python run_visualizer.py --object_dir ../demo/demo_output/0
+
+
+
+
+
+
+# Full pipeline (inference + visualizer):
+python run_whole.py --mode infer
+
+# Visualize existing output only:
+python run_whole.py --mode visualize --object_dir output/0
+
+# Interactive mode (prompts you to choose):
+python run_whole.py

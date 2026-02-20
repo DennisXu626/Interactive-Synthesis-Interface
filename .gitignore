@@ -1,0 +1,8 @@
+scenesmith_sample/
+*.tar
+*.blend
+*.ckpt
+*.ply
+*.obj
+*.npy
+demo/demo_output/
